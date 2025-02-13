@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Enter Vehicle Information</title>
+  <script>
+    function submitForm(event) {
+      event.preventDefault(); 
+
+      const formData = new FormData(document.getElementById('vehicleForm'));
+
+      fetch('/add-vehicle', {
+        method: 'POST',
+        body: new URLSearchParams(formData)
+      })
+      .then(response => response.text())
+      .then(message => {
+        document.getElementById('message').innerHTML = message;
+        document.getElementById('vehicleForm').reset();
+      })
+      .catch(error => console.error('Error:', error));
+    }
+  </script>
+</head>
+<body>
+  <h1>Vehicle Information System</h1>
+  <h2>Add Vehicle Information</h2>
+
+  <form id="vehicleForm" onsubmit="submitForm(event)">
+    <label for="make">Make:</label>
+    <input type="text" id="make" name="make" required><br><br>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" required><br><br>
+
+    <label for="km">Kilometers:</label>
+    <input type="number" id="km" name="km" required><br><br>
+
+    <label for="color">Color:</label>
+    <input type="text" id="color" name="color" required><br><br>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" required><br><br>
+
+    <label for="value">Value:</label>
+    <input type="number" id="value" name="value" step="0.01" required><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p> 
+  <p><a href="view-vehicles.html">View Vehicle Details</a></p>
+</body>
+</html>

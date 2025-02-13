@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Captured Vehicles</title>
+  <script>
+    window.onload = function() {
+      fetch('/api/vehicles')
+        .then(response => response.json()) // Parse the JSON data from the server
+        .then(data => {
+          const tableBody = document.getElementById('vehicle-table-body');
+          
+          // Loop through the data and create a table row for each vehicle
+          data.forEach(vehicle => {
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+              <td>${vehicle.id}</td>
+              <td>${vehicle.make}</td>
+              <td>${vehicle.model}</td>
+              <td>${vehicle.km}</td>
+              <td>${vehicle.color}</td>
+              <td>${vehicle.location}</td>
+              <td>${vehicle.value}</td>
+            `;
+            
+            tableBody.appendChild(row); // Append the row to the table
+          });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    };
+  </script>
+</head>
+<body>
+  <h1>Captured Vehicles</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>KM</th>
+        <th>Color</th>
+        <th>Location</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody id="vehicle-table-body">
+      <!-- Data will be inserted here dynamically -->
+    </tbody>
+  </table>
+
+  <p>Go back to <a href="index.html">Home</a></p>
+</body>
+</html>
