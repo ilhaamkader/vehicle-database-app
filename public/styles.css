@@ -1,10 +1,21 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Quicksand:wght@300..700&family=Yeseva+One&display=swap');
+/* General Body Styling */
+@font-face {
+    font-family: 'RaceLine';
+    src: url('fonts/Raceline-Demo.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Raleway';
+    src: url('fonts/Raleway-Regular.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
 
 /* Font Styles */
 body {
-    font-family: "Quicksand", sans-serif;
-    background-image: url('https://th.bing.com/th/id/R.6a862197fbd48d2ce17c361ab3c1475c?rik=9mxGgZmMC63QVg&pid=ImgRaw&r=0');
+    font-family: "Raleway", sans-serif;
+    background-image: url('https://wallpaperaccess.com/full/2355738.jpg');
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 
@@ -15,12 +26,27 @@ body {
     color: #2c3e50; /* Improved contrast */
 }
 
+.home-body {
+    overflow: hidden;
+    height: 100vh; /* Ensures it covers the full viewport */
+    width: 100vw;
+}
+
+.goback {
+    color: #d6ffd9;
+}
+
 /* Headings */
 h1, h2 {
-    color: #ffffff;
-    font-family: "Prata", serif;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    color: #c5f1c2;
+    font-family: "Raceline", serif;
+    text-shadow: 
+        -1px -1px 0 #2c3e50,  /* Top-left */
+         1px -1px 0 #2c3e50,  /* Top-right */
+         1px   1px 0 #2c3e50,  /* Bottom-left */
+         1px  1px 0 #2c3e50;  /* Bottom-right */
 }
+
 
 /* Form Container */
 form {
@@ -61,7 +87,7 @@ input:focus {
 
 /* Submit Button */
 button {
-    background: linear-gradient(135deg, #28a3a7, #1f8c91);
+    background: linear-gradient(135deg, #a0e5e8, #24595b);
     color: white;
     padding: 12px;
     border: none;
@@ -72,6 +98,7 @@ button {
     font-size: 16px;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
+    font-family: 'Raleway', sans-serif;
 }
 
 /* Button Hover Effect */
@@ -90,7 +117,7 @@ button:hover {
 /* Links */
 a {
     text-decoration: none;
-    color: #365d86;
+    color: #d6ffd9;
     font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
@@ -113,7 +140,7 @@ table {
 
 /* Table Headers */
 th {
-    background-color: #28a3a7;
+    background-color: #24595b;
     color: white;
     padding: 12px;
     font-size: 16px;
@@ -152,3 +179,37 @@ tbody tr:hover {
         padding: 8px;
     }
 }
+
+
+/* Form Container Styling */
+.home {
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background */
+    border-radius: 15px;
+    padding: 20px; /* Reduced padding */
+    text-align: center;
+    width: 50%; /* Reduced width percentage */
+    max-width: 500px; /* Reduced max-width */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+    border: 3px solid #28a3a7; /* Border around the container */
+    
+    /* Centering */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Moving Car Styling */
+.moving-car {
+    position: absolute;
+    left: -100px;
+    top: 70%;
+    font-size: 3rem;
+    animation: drive 5s linear infinite;
+}
+
+@keyframes drive {
+    0% { left: -100px; }
+    100% { left: 100vw; }
+}
+

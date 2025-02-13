@@ -8,7 +8,7 @@
   <script>
     window.onload = function() {
       fetch('/api/vehicles')
-        .then(response => response.json()) // Parse the JSON data from the server
+        .then(response => response.json()) 
         .then(data => {
           const tableBody = document.getElementById('vehicle-table-body');
           
@@ -35,7 +35,7 @@
 </head>
 <body>
   <h1>Captured Vehicles</h1>
-  <table border="1">
+  <table>
     <thead>
       <tr>
         <th>ID</th>
@@ -52,6 +52,6 @@
     </tbody>
   </table>
 
-  <p>Go back to <a href="index.html">Home</a></p>
+  <p class="goback">Go back to <a href="index.html">Home</a></p>
 </body>
 </html>
